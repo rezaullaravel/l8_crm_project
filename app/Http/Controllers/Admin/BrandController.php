@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ProductMultipleImage;
+use Illuminate\Support\Facades\File;
 
 class BrandController extends Controller
 {
@@ -80,7 +83,26 @@ class BrandController extends Controller
 
     //delete brand
     public function deleteBrand($id){
-        Brand::find($id)->delete();
+        $brand = Brand::find($id);
+        $products = Product::where('brand_id',$brand->id)->get();
+
+        if($products){
+            foreach($products as $product){
+                unlink($product->product_thumbnail);
+                    if($product->multiImages){
+                                foreach($product->multiImages as $image){
+                                    if(File::exists( $image->product_image)){
+                                        unlink( $image->product_image);
+                                    }
+
+                                    $imgdelete = ProductMultipleImage::find($image->id)->delete();
+                                }
+                    }//end if
+                    $product->delete();
+               }//end foreach
+          }//end if
+
+          $brand->delete();
         return redirect('/admin/brand/manage')->with('message','Brand deleted successfully');
     }//end method
 

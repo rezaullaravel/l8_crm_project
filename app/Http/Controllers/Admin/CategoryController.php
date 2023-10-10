@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ProductMultipleImage;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -71,7 +74,27 @@ class CategoryController extends Controller
 
     //delete category
     public function deleteCategory($id){
-        Category::find($id)->delete();
+        $category = Category::find($id);
+       $products = Product::where('category_id',$category->id)->get();
+
+      if($products){
+        foreach($products as $product){
+            unlink($product->product_thumbnail);
+                if($product->multiImages){
+                            foreach($product->multiImages as $image){
+                                if(File::exists( $image->product_image)){
+                                    unlink( $image->product_image);
+                                }
+
+                                $imgdelete = ProductMultipleImage::find($image->id)->delete();
+                            }
+                }//end if
+                $product->delete();
+           }//end foreach
+      }//end if
+
+
+        $category->delete();
         return redirect()->back()->with('message','Category deleted Successfully');
     }//end method
 

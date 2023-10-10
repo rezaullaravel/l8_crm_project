@@ -23,7 +23,7 @@ class Product extends Model
     ];
 
     public function category(){
-        return $this->belongsTo(Category::class,'category_id');
+        return $this->belongsTo(Category::class,'category_id')->withDefault();
     }
 
     public function brand(){
@@ -32,5 +32,9 @@ class Product extends Model
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function multiImages(){
+        return $this->hasMany(ProductMultipleImage::class,'product_id');
     }
 }

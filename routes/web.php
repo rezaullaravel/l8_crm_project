@@ -71,6 +71,13 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::get('/product/filter/by-category',[ProductController::class,'filterBycategory']);
     Route::get('/product/deactive/{id}',[ProductController::class,'deactiveProduct'])->name('admin.product.deactive');
     Route::get('/product/active/{id}',[ProductController::class,'activeProduct'])->name('admin.product.active');
+    Route::get('/product/details/{id}',[ProductController::class,'detailsProduct'])->name('admin.product.details');
+    Route::get('/product/edit/{id}',[ProductController::class,'editProduct'])->name('admin.product.edit');
+    Route::get('/product/image/delete/{id}',[ProductController::class,'deleteProductImage'])->name('admin.product-image.delete');
+    Route::post('/product/update',[ProductController::class,'updateProduct'])->name('admin.product.update');
+    Route::get('/product/delete/{id}',[ProductController::class,'deleteProduct'])->name('admin.product.delete');
+
+
 
 });
 

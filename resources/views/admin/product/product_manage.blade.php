@@ -90,8 +90,9 @@ Manage Product
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{-- route('admin.category.edit',$category->id) --}}" class="btn btn-success btn-sm" title="edit"><i class="fa fa-pen"></i></a>
-                                            <a href="{{-- route('admin.category.delete',$category->id) --}}" class="btn btn-danger btn-sm" onclick="confirmation(event)" title="delete"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('admin.product.details',$product->id) }}" class="btn btn-primary btn-sm" title="View Details"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('admin.product.edit',$product->id) }}" class="btn btn-success btn-sm" title="edit"><i class="fa fa-pen"></i></a>
+                                            <a href="{{ route('admin.product.delete',$product->id) }}" class="btn btn-danger btn-sm" onclick="confirmation(event)" title="delete"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
 
