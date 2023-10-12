@@ -1,3 +1,5 @@
+
+@if(Auth::user()->role==1)
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('/admin/dashboard') }}" class="brand-link">
@@ -103,9 +105,32 @@
               {{-- product end --}}
 
 
+              {{-- chat with employee start --}}
+              <li class="nav-item {{ (request()->is('admin/chat*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('admin/chat*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-solid fa-object-group"></i>
+                  <p>
+                    Chat
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="{{ (request()->is('admin/product*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
+                  <li class="nav-item">
+                    <a  href="{{ route('admin.chat.employee') }}"  class=" nav-link {{ (request()->is('admin/chat/employee')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Chat With Employee</p>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+              {{-- chat with employee end --}}
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+  @endif

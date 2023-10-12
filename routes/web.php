@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Employee\EmployeeController;
@@ -78,8 +79,15 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::get('/product/delete/{id}',[ProductController::class,'deleteProduct'])->name('admin.product.delete');
 
 
+    //admin chat with employee
+    Route::get('/chat/employee',[MessageController::class,'chatWithEmployee'])->name('admin.chat.employee');
+    Route::get('/message/show/{id}',[MessageController::class,'show'])->name('admin.message.show');
+
+
 
 });
+
+Route::post('/message/sent/from/user',[MessageController::class,'sentFromUser'])->name('message.sent-from.user');
 
 /** ============================== Admin all route end  ================================== */
 
@@ -89,5 +97,7 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
 Route::prefix('employee')->middleware(['auth','employee'])->group(function(){
 
     Route::get('/dashboard',[EmployeeController::class,'index']);
-});
+
+ Route::get('/chat/with/admin',[MessageController::class,'chatWithAdmin'])->name('chat.with.admin');
+ });
 

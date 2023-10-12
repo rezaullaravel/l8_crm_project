@@ -45,6 +45,8 @@
 
     {{-- sweet alert cdn --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+  @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -166,6 +168,8 @@
     $('#example').DataTable();
 </script>
 {{-- data table end --}}
+
+@livewireScripts
 
 <!-- jQuery -->
 <script src="{{ asset('/') }}admin/plugins/jquery/jquery.min.js"></script>
