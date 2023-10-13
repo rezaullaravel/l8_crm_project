@@ -5,11 +5,13 @@
           <div class="col-md-8 offset-md-2">
             <div class="card">
                <div class="card-header">
-                  <p>{{ $userId }}</p>
-                  <h2>Chat Between Admin And Employee <a href="{{route('logout')}}" class="btn btn-info" style="float: right;"
+                  {{-- <p>{{ $userId }}</p> --}}
+                  <h2>Chat Between Admin And Employee @if (Auth::user()->role=='2')
+                    <a href="{{route('logout')}}" class="btn btn-info" style="float: right;"
                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
-                    >Logout</a></h2>
+                    >Logout</a>
+                  @endif</h2>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf

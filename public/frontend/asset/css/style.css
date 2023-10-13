@@ -1,0 +1,303 @@
+body {
+    font-family: 'Sansation';
+}
+
+.heroBanner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+.heroBanner::after {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: .6;
+    z-index: -111;
+
+}
+
+.coustomer_need {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.feture_card {
+    background: #fff;
+    border-radius: 6px 47px 6px 6px;
+    transition: .3s all ease;
+    cursor: pointer;
+}
+
+.feture_card:hover {
+    background: #000;
+}
+
+.feture_icon {
+    background: #DDEFF8;
+    display: inline-block;
+    padding: 30px 20px;
+    border-radius: 4px 22px 4px 4px;
+
+}
+
+.feture_card:hover .feture_icon {
+    background: #F5F5F5;
+}
+
+.fetuer_info {
+    color: #000;
+}
+
+.feture_card:hover .fetuer_info {
+    color: #fff;
+}
+
+.crm_tools {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* =================Registration-form========== */
+.auth_area {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.input_area {
+    position: relative;
+}
+
+.input_icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+
+/* ================Shop-page============ */
+.search_input {
+    position: relative;
+}
+
+.search_icon {
+    position: absolute;
+    right: 10px;
+    top: 60%;
+    transform: translateY(-50%);
+}
+
+
+/* ============== */
+.side-bar {
+    background: #1b1a1b;
+    backdrop-filter: blur(15px);
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    overflow-y: auto;
+    transition: 0.6s ease;
+    transition-property: left;
+}
+
+.side-bar::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+
+.side-bar.active {
+    left: 0;
+}
+
+.side-bar .menu .item {
+    position: relative;
+    cursor: pointer;
+}
+
+.side-bar .menu .item a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+    padding: 5px 30px;
+    line-height: 60px;
+}
+
+.side-bar .menu .item a:hover {
+    background: #33363a;
+    transition: 0.3s ease;
+}
+
+
+.side-bar .menu .item a .dropdown {
+    position: absolute;
+    right: 0;
+    transition: 0.3s ease;
+}
+
+.side-bar .menu .item .sub-menu {
+    display: none;
+}
+
+.side-bar .menu .item .sub-menu a {
+    padding-left: 80px;
+}
+
+.rotate {
+    transform: rotate(90deg);
+}
+
+.close-btn {
+    position: absolute;
+    color: #fff;
+    right: 0px;
+    cursor: pointer;
+}
+
+/* ============== */
+
+.range-slider {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.range-slider label {
+    color: #fff;
+    font-size: 13px;
+}
+
+
+
+.range-slider .number-group .number-input:first-of-type {
+    margin-right: 7px;
+}
+
+.range-slider .number-group .number-input:last-of-type {
+    margin-left: 7px;
+}
+
+.range-slider .number-group .number-input::-webkit-outer-spin-button,
+.range-slider .number-group .number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.range-slider .number-group .number-input:invalid,
+.range-slider .number-group .number-input:out-of-range {
+    border: 2px solid red;
+}
+
+.range-slider .range-group {
+    position: relative;
+    flex: 0 0 100%;
+    height: 20px;
+}
+
+.range-slider .range-group .range-input {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    -webkit-appearance: none;
+    width: 100%;
+    border-bottom: 0;
+}
+
+.range-slider .range-group .range-input:focus {
+    outline: 0;
+}
+
+.range-slider .range-group .range-input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    -webkit-animation: 0.2s;
+    animation: 0.2s;
+    background: #3FAFFA;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+
+.range-slider .range-group .range-input::-webkit-slider-thumb {
+    z-index: 2;
+    position: relative;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #3FAFFA;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+}
+
+.range-slider .range-group .range-input::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: #3FAFFA;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+
+.range-slider .range-group .range-input::-moz-range-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #2497e3;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #3FAFFA;
+    cursor: pointer;
+}
+
+.range-slider .range-group .range-input::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+.range-slider .range-group .range-input::-ms-fill-lower,
+.range-slider .range-group .range-input::-ms-fill-upper {
+    background: #3FAFFA;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+
+.range-slider .range-group .range-input::-ms-thumb {
+    z-index: 2;
+    position: relative;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #3FAFFA;
+    cursor: pointer;
+}
+
+/* for demo purposes */

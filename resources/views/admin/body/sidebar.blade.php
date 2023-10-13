@@ -114,7 +114,7 @@
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-                <ul class="nav nav-treeview" style="{{ (request()->is('admin/product*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
+                <ul class="nav nav-treeview" style="{{ (request()->is('admin/chat*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
                   <li class="nav-item">
                     <a  href="{{ route('admin.chat.employee') }}"  class=" nav-link {{ (request()->is('admin/chat/employee')) ? 'active' : '' }}">
                       <i class="far fa-circle nav-icon"></i>

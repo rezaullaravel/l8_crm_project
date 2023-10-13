@@ -8,21 +8,16 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Frontend\FrontendIndexController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+/**===============================Frontend all route============================== */
+Route::get('/',[FrontendIndexController::class,'index']);
+/**===============================Frontend all route end============================== */
+
 
 Auth::routes();
 
@@ -93,11 +88,12 @@ Route::post('/message/sent/from/user',[MessageController::class,'sentFromUser'])
 
 
 
-//employee
+ /**===================== employee start============================================= */
 Route::prefix('employee')->middleware(['auth','employee'])->group(function(){
 
     Route::get('/dashboard',[EmployeeController::class,'index']);
 
  Route::get('/chat/with/admin',[MessageController::class,'chatWithAdmin'])->name('chat.with.admin');
  });
+ /**===================== employee end================================ */
 
