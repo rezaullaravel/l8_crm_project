@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Frontend\ShoppingCartController;
 use App\Http\Controllers\Frontend\FrontendIndexController;
 
 
@@ -15,7 +16,29 @@ use App\Http\Controllers\Frontend\FrontendIndexController;
 
 
 /**===============================Frontend all route============================== */
+//home page
 Route::get('/',[FrontendIndexController::class,'index']);
+
+//product single page
+Route::get('/product/single/{id}',[FrontendIndexController::class,'productSingle'])->name('product.single');
+
+//product add to cart
+Route::post('/product/add-to/cart',[ShoppingCartController::class,'productAddtoCart'])->name('product.add.cart');
+
+//view shopping cart product
+Route::get('/cart-product/view',[ShoppingCartController::class,'cartProductView'])->middleware('auth')->name('cart-product.view');
+
+//product quantity increment
+Route::post('/quantity/increment',[ShoppingCartController::class,'incrementQuantity']);
+
+//product quantity decrement
+Route::post('/quantity/decrement',[ShoppingCartController::class,'decrementQuantity']);
+
+//delete cart item
+Route::get('/cart-item/delete',[ShoppingCartController::class,'cartItemDelete']);
+
+//empty cart item
+Route::get('/cart/empty',[ShoppingCartController::class,'emptyCart']);
 /**===============================Frontend all route end============================== */
 
 
@@ -83,6 +106,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
 });
 
 Route::post('/message/sent/from/user',[MessageController::class,'sentFromUser'])->name('message.sent-from.user');
+
+
 
 /** ============================== Admin all route end  ================================== */
 

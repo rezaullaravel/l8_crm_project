@@ -17,6 +17,7 @@
                         </div>
                         <div class="flex justify-end">
                             <div class="  w-2/4">
+                                <a href="{{ route('cart-product.view') }}" style="color:#fff;">Shopping Cart</a> <br/><br/>
                                 <h2 class=" text-lg font-normal text-white mb-6">Create your account</h2>
                                 <form action="">
                                     <div class="mb-3">
@@ -332,19 +333,23 @@
 
                     <div class="swiper myproduct">
                         <div class="swiper-wrapper">
+                            {{-- product loop --}}
+                            @foreach ($products as $product)
                             <div class="swiper-slide">
                                 <div class="">
                                     <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product01.png') }}"
+                                        <a href="{{ route('product.single',$product->id) }}">
+                                            <img class="w-full h-full" src="{{ asset($product->product_thumbnail) }}"
                                             alt="">
+                                        </a>
                                     </div>
                                     <div class=" bg-white px-4 py-5">
                                         <div class=" flex justify-between items-start">
                                             <div class="">
-                                                <h2 class=" text-xs text-black">Sony Camera</h2>
+                                                <h2 class=" text-xs text-black">{{ $product->product_name }}</h2>
                                             </div>
                                             <div class="">
-                                                <h2 class=" text-xs text-black">945$</h2>
+                                                <h2 class=" text-xs text-black">{{ $product->price }}$</h2>
                                             </div>
                                         </div>
                                         <div class=" mt-3 flex justify-center">
@@ -364,294 +369,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product02.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Grocery Item</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">5$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
+                            @endforeach
+                            {{-- product loop end --}}
 
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product03.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Wrist Watch</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">18$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product04.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Perl Jewellery</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">45$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product05.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Grocery Item</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">5$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product01.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Sony Camera</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">945$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product02.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Grocery Item</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">5$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product03.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Wrist Watch</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">18$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product04.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Perl Jewellery</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">45$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="">
-                                    <div class="">
-                                        <img class="w-full h-full" src="{{ asset('frontend/asset/img/product05.png') }}"
-                                            alt="">
-                                    </div>
-                                    <div class=" bg-white px-4 py-5">
-                                        <div class=" flex justify-between items-start">
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">Grocery Item</h2>
-                                            </div>
-                                            <div class="">
-                                                <h2 class=" text-xs text-black">5$</h2>
-                                            </div>
-                                        </div>
-                                        <div class=" mt-3 flex justify-center">
-                                            <a href="#" class="  bg-crayola hover:bg-palecyan inline-block px-2">
-                                                <div class=" flex items-center gap-2 ">
-                                                    <div class="  text-sm text-black mt-1">
-                                                        <iconify-icon icon="mdi:cart-variant"></iconify-icon>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="text-xs text-black">Add To Cart</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>

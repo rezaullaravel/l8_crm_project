@@ -35,4 +35,6 @@ class MessageController extends Controller
     public function chatWithEmployee(){
         return view('admin.chat.chat_with_employee');
     }//end method
+
+
 }//end class

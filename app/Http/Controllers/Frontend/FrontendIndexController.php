@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontendIndexController extends Controller
 {
     //home page
     public function index(){
-        return view('frontend.home.index');
+        $products = Product::orderBy('id','desc')->limit(10)->get();
+        return view('frontend.home.index',compact('products'));
+    }//end method
+
+
+    //product single page
+    public function productSingle($id){
+        $product = Product::find($id);
+        return view('frontend.product.product_single',compact('product'));
     }//end method
 
 
