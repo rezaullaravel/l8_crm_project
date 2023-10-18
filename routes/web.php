@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Frontend\ShoppingCartController;
 use App\Http\Controllers\Frontend\FrontendIndexController;
@@ -39,6 +40,9 @@ Route::get('/cart-item/delete',[ShoppingCartController::class,'cartItemDelete'])
 
 //empty cart item
 Route::get('/cart/empty',[ShoppingCartController::class,'emptyCart']);
+
+//checkout page
+Route::get('/checkout/page',[CheckoutController::class,'checkout'])->middleware('auth');
 /**===============================Frontend all route end============================== */
 
 
