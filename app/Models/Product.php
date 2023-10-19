@@ -27,14 +27,18 @@ class Product extends Model
     }
 
     public function brand(){
-        return $this->belongsTo(Brand::class,'brand_id');
+        return $this->belongsTo(Brand::class,'brand_id')->withDefault();
     }
 
     public function user(){
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'user_id')->withDefault();
     }
 
     public function multiImages(){
         return $this->hasMany(ProductMultipleImage::class,'product_id');
+    }
+
+    public function storehouse(){
+        return $this->belongsTo(Storehouse::class,'storehouse_id')->withDefault();
     }
 }

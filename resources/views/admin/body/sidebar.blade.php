@@ -78,6 +78,33 @@
               {{-- brand end --}}
 
 
+              {{-- store house start --}}
+              <li class="nav-item {{ (request()->is('admin/storehouse*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('admin/storehouse*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-solid fa-object-group"></i>
+                  <p>
+                    Store House
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="{{ (request()->is('admin/storehouse*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
+                  <li class="nav-item">
+                    <a  href="{{ route('admin.storehouse.add') }}"  class=" nav-link {{ (request()->is('admin/storehouse/add')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Add Store House</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.storehouse.manage') }}" class="nav-link {{ (request()->is('admin/storehouse/manage')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Manage Store House</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              {{-- store house end --}}
+
+
               {{-- product start --}}
               <li class="nav-item {{ (request()->is('admin/product*')) ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ (request()->is('admin/product*')) ? 'active' : '' }}">
@@ -105,6 +132,33 @@
               {{-- product end --}}
 
 
+              {{-- state start --}}
+              <li class="nav-item {{ (request()->is('admin/state*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('admin/state*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-solid fa-object-group"></i>
+                  <p>
+                   State
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="{{ (request()->is('admin/state*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
+                  <li class="nav-item">
+                    <a  href="{{ route('admin.state.add') }}"  class=" nav-link {{ (request()->is('admin/state/add')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Add State</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.state.manage') }}" class="nav-link {{ (request()->is('admin/state/manage')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Manage State</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              {{-- state end --}}
+
+
               {{-- chat with employee start --}}
               <li class="nav-item {{ (request()->is('admin/chat*')) ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ (request()->is('admin/chat*')) ? 'active' : '' }}">
@@ -125,6 +179,27 @@
                 </ul>
               </li>
               {{-- chat with employee end --}}
+
+
+              {{-- order history start --}}
+              <li class="nav-item {{ (request()->is('admin/order*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('admin/order*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-solid fa-object-group"></i>
+                  <p>
+                    Order
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="{{ (request()->is('admin/order*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
+                  <li class="nav-item">
+                    <a  href="{{ route('admin.order.history') }}"  class=" nav-link {{ (request()->is('admin/order/history')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Order/Delivery History</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              {{-- order history end --}}
 
 
         </ul>

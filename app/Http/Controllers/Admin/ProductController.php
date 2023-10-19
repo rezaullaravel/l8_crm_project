@@ -6,6 +6,7 @@ use Image;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Storehouse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ProductMultipleImage;
@@ -18,7 +19,8 @@ class ProductController extends Controller
     public function addProduct(){
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin.product.product_add',compact('categories','brands'));
+        $storehouses = Storehouse::all();
+        return view('admin.product.product_add',compact('categories','brands','storehouses'));
     }//end method
 
 
@@ -59,6 +61,8 @@ class ProductController extends Controller
          $product->category_id = $request->category_id;
 
          $product->brand_id = $request->brand_id;
+
+         $product->storehouse_id = $request->storehouse_id;
 
          $product->product_name = $request->product_name;
 
@@ -178,7 +182,8 @@ public function editProduct($id){
     $product = Product::find($id);
     $categories = Category::all();
     $brands = Brand::all();
-    return view('admin.product.product_edit',compact('product','categories','brands'));
+    $storehouses = Storehouse::all();
+    return view('admin.product.product_edit',compact('product','categories','brands','storehouses'));
 }//end method
 
 
@@ -234,6 +239,8 @@ public function updateProduct(Request $request){
     $product->category_id = $request->category_id;
 
     $product->brand_id = $request->brand_id;
+
+    $product->storehouse_id = $request->storehouse_id;
 
     $product->product_name = $request->product_name;
 

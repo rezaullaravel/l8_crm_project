@@ -20,7 +20,7 @@ Edit Product
                         <input type="hidden" name="id" value="{{ $product->id }}">
                       <div class="card-body">
                          <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>Category <span class="text-danger">*</span></label>
                                     <select name="category_id" class="form-control">
@@ -36,13 +36,30 @@ Edit Product
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>Brand <span class="text-danger">*</span></label>
                                     <select name="brand_id" class="form-control">
                                         <option value="" selected disabled>Select</option>
                                         @foreach ($brands as $brand)
                                             <option value="{{ $brand->id }}" {{ $brand->id == $product->brand_id ? 'selected' : '' }}>{{ $brand->brand_name}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('brand_id')
+                                    <span class="text-danger">{{ $message }}</span>
+
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Store House <span class="text-danger">*</span></label>
+                                    <select name="storehouse_id" class="form-control">
+                                        <option value="" selected disabled>Select</option>
+                                        @foreach ($storehouses as $house)
+                                            <option value="{{ $house->id }}" {{ $product->storehouse_id==$house->id ? 'selected' :'' }}>{{ $house->name}}</option>
                                         @endforeach
                                     </select>
 

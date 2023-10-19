@@ -49,6 +49,7 @@ Manage Product
                                         <th class="text-center">Creator</th>
                                         <th class="text-center">Category</th>
                                         <th class="text-center">Brand</th>
+                                        <th class="text-center">Store House</th>
                                         <th class="text-center">Thumbnail</th>
                                         <th class="text-center">Hot Deals</th>
                                         <th class="text-center">Featured</th>
@@ -63,6 +64,7 @@ Manage Product
                                         <td>{{ $product->user->name }}</td>
                                         <td>{{ $product->category->category_name }}</td>
                                         <td>{{ $product->brand->brand_name }}</td>
+                                        <td>{{ $product->storehouse->name }}</td>
                                         <td>
                                             <img src="{{ asset($product->product_thumbnail) }}" alt="" width="100">
                                         </td>

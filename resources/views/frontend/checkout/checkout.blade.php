@@ -2,6 +2,7 @@
 
 @section('content')
     <section>
+
         <div class=" py-10 px-3 lg:px-16 xl:px-0">
             <div class="container mx-auto">
 
@@ -11,10 +12,19 @@
                             <h1>Shipping Address</h1>
                         </div>
 
+                        @if (Session('message'))
+
+                          <div>
+                            {{ Session::get('message') }}
+                          </div>
+
+                        @endif
+
                     </div>
 
                     <div class="">
-                        <form action="">
+                        <form action="{{ route('place.order') }}" method="POST">
+                            @csrf
                             <div class="lg:grid lg:grid-cols-12 gap-20 items-center mt-10">
                                 <div class=" col-span-8">
                                     <div class=" grid md:grid-cols-2 gap-5">
@@ -27,39 +37,52 @@
 
                                     </div>
                                     <div class="mt-6">
-                                        <p class=" text-2xl text-black mb-2 ml-2">Address</p>
+                                        <p class=" text-2xl text-black mb-2 ml-2">Address<span style="color: #ff0000;">*</span></p>
                                         <input class=" w-full  bg-azureish_white px-3 py-2 rounded-md focus:outline-none"
                                             type="text" name="c_shipping_address" required>
                                     </div>
 
                                     <div class="mt-6">
+                                        <p class=" text-2xl text-black mb-2 ml-2">Country<span style="color: #ff0000;">*</span></p>
+                                        <input class=" w-full  bg-azureish_white px-3 py-2 rounded-md focus:outline-none"
+                                            type="text" name="c_country" required>
+                                    </div>
+
+                                    <div class="mt-6">
                                         <p class=" text-2xl text-black mb-2 ml-2">State</p>
                                         <input class=" w-full  bg-azureish_white px-3 py-2 rounded-md focus:outline-none"
-                                            type="text" name="c_state" required>
+                                            type="text" name="c_state">
                                     </div>
 
 
                                     <div class="mt-6">
-                                        <p class=" text-2xl text-black mb-2 ml-2">City</p>
+                                        <p class=" text-2xl text-black mb-2 ml-2">City<span style="color: #ff0000;">*</span></p>
                                         <input class=" w-full  bg-azureish_white px-3 py-2 rounded-md focus:outline-none"
                                             type="text" name="c_city" required>
                                     </div>
                                     <div class="mt-6">
-                                        <p class=" text-2xl text-black mb-2 ml-2">Postcode / ZIP</p>
+                                        <p class=" text-2xl text-black mb-2 ml-2">Zip Code<span style="color: #ff0000;">*</span></p>
                                         <input
                                             class=" w-full  bg-azureish_white px-3 py-2 rounded-md appearance-none focus:outline-none"
                                             type="text" name="c_zipcode" required>
                                     </div>
                                     <div class="mt-6">
-                                        <p class=" text-2xl text-black mb-2 ml-2">Email</p>
+                                        <p class=" text-2xl text-black mb-2 ml-2">Email<span style="color: #ff0000;">*</span></p>
                                         <input class=" w-full  bg-azureish_white px-3 py-2 rounded-md focus:outline-none"
                                             type="email" name="c_email" required>
                                     </div>
                                     <div class="mt-6">
-                                        <p class=" text-2xl text-black mb-2 ml-2">Phone</p>
+                                        <p class=" text-2xl text-black mb-2 ml-2">Phone<span style="color: #ff0000;">*</span></p>
                                         <input
                                             class=" w-full  bg-azureish_white px-3 py-2 rounded-md appearance-none focus:outline-none"
                                             type="text" name="c_phone" required>
+                                    </div>
+
+                                    <div class="mt-6">
+                                        <p class=" text-2xl text-black mb-2 ml-2">Payment Type<span style="color: #ff0000;">*</span></p>
+                                        <input type="radio" name="payment_type" value="cash_on_delivery" checked>Cash On Delivery
+                                        <input type="radio" name="payment_type" value="paypal">Paypal
+                                        <input type="radio" name="payment_type" value="stripe">Stripe
                                     </div>
                                 </div>
 
@@ -149,9 +172,12 @@
                                         </div>
 
                                     </div>
+                                    <input type="hidden" name="order_total" value="{{ $total+1 }}">
+                                    @if(count($cartproducts)>0)
                                     <div class="mt-10 flex justify-end">
                                         <button type="submit" class=" bg-[#357403] px-4 py-2 text-white">Place Order</button>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </form>
@@ -159,5 +185,7 @@
                 </div>
             </div>
         </div>
+
+
     </section>
 @endsection

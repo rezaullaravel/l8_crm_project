@@ -3,12 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\StorehouseController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\OrderHistoryController;
 use App\Http\Controllers\Frontend\ShoppingCartController;
 use App\Http\Controllers\Frontend\FrontendIndexController;
 
@@ -27,7 +30,7 @@ Route::get('/product/single/{id}',[FrontendIndexController::class,'productSingle
 Route::post('/product/add-to/cart',[ShoppingCartController::class,'productAddtoCart'])->name('product.add.cart');
 
 //view shopping cart product
-Route::get('/cart-product/view',[ShoppingCartController::class,'cartProductView'])->middleware('auth')->name('cart-product.view');
+Route::get('/cart-product/view',[ShoppingCartController::class,'cartProductView'])->middleware(['auth','user'])->name('cart-product.view');
 
 //product quantity increment
 Route::post('/quantity/increment',[ShoppingCartController::class,'incrementQuantity']);
@@ -43,6 +46,9 @@ Route::get('/cart/empty',[ShoppingCartController::class,'emptyCart']);
 
 //checkout page
 Route::get('/checkout/page',[CheckoutController::class,'checkout'])->middleware('auth');
+
+//order place
+Route::post('/place/order',[CheckoutController::class,'placeOrder'])->name('place.order');
 /**===============================Frontend all route end============================== */
 
 
@@ -106,9 +112,35 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::get('/message/show/{id}',[MessageController::class,'show'])->name('admin.message.show');
 
 
+    //order history
+    Route::get('/order/history',[OrderHistoryController::class,'index'])->name('admin.order.history');
+    Route::get('/order/details/{id}',[OrderHistoryController::class,'orderDetails'])->name('admin.order.details');
+    Route::get('/delivery/status/one/{id}',[OrderHistoryController::class,'changeDeliveryStatusToOne'])->name('admin.delivery-status.toOne');
+
+
+
+    //store house
+    Route::get('/storehouse/add',[StorehouseController::class,'addStorehouse'])->name('admin.storehouse.add');
+    Route::post('/storehouse/store',[StorehouseController::class,'saveStorehouse'])->name('admin.storehouse.store');
+    Route::get('/storehouse/manage',[StorehouseController::class,'manageStorehouse'])->name('admin.storehouse.manage');
+    Route::get('/storehouse/edit/{id}',[StorehouseController::class,'editStorehouse'])->name('admin.storehouse.edit');
+    Route::post('/storehouse/update',[StorehouseController::class,'updateStorehouse'])->name('admin.storehouse.update');
+    Route::get('/storehouse/delete/{id}',[StorehouseController::class,'deleteStorehouse'])->name('admin.storehouse.delete');
+
+
+    //state
+    Route::get('/state/add',[StateController::class,'addState'])->name('admin.state.add');
+    Route::post('/state/store',[StateController::class,'storeState'])->name('admin.state.store');
+    Route::get('/state/manage',[StateController::class,'manageState'])->name('admin.state.manage');
+    Route::get('/state/edit/{id}',[StateController::class,'editState'])->name('admin.state.edit');
+    Route::post('/state/update',[StateController::class,'updateState'])->name('admin.state.update');
+    Route::get('/state/delete/{id}',[StateController::class,'deleteState'])->name('admin.state.delete');
+
+
 
 });
 
+//message sent from employee
 Route::post('/message/sent/from/user',[MessageController::class,'sentFromUser'])->name('message.sent-from.user');
 
 
