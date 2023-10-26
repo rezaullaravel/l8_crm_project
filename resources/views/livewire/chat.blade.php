@@ -114,7 +114,7 @@
              <form wire:submit.prevent="sentFromUser">
                 @csrf
                 <div class="form-group">
-                   <input type="text" wire:model.difer="message" class="form-control" style="display:inline;">
+                   <input type="text" wire:model.difer="message" class="form-control" style="display:inline;" required>
                    <input type="hidden" wire.model.difer="userId" value="{{ $userId }}" class="form-control" style="display:inline;">
                    <button type="submit" class="btn btn-success" style="display: inline;">Send</button>
                 </div>

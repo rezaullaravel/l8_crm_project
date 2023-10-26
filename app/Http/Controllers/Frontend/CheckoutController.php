@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Order;
+use App\Models\State;
 use App\Models\OrderDetails;
 use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class CheckoutController extends Controller
 {
     //checkout page
     public function checkout(){
-        return view('frontend.checkout.checkout');
+        $states = State::all();
+        return view('frontend.checkout.checkout',compact('states'));
     }//end method
 
 
@@ -57,6 +59,7 @@ class CheckoutController extends Controller
                   'product_id' => $product->product_id,
                   'product_quantity' => $product->quantity,
                   'price' => $product->product->price,
+                  'date' => date('F j,Y'),
                 //   'color' => $product->color,
               ]);
             }

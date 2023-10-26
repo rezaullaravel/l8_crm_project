@@ -19,7 +19,7 @@ class OrderHistoryController extends Controller
 
     //order details
     public function orderDetails($id){
-        $order = DB::table('orders')->where('id',$id)->first();
+        $order = Order::where('id',$id)->first();
         $orderDetails = OrderDetails::where('order_id',$id)->get();
         return view('admin.order.order_details',compact('order','orderDetails'));
     }//end method

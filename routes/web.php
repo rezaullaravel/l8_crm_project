@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\OrderHistoryController;
 use App\Http\Controllers\Frontend\ShoppingCartController;
 use App\Http\Controllers\Frontend\FrontendIndexController;
+use App\Http\Controllers\Admin\ProductSellingHistoryController;
 
 
 
@@ -135,6 +136,22 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::get('/state/edit/{id}',[StateController::class,'editState'])->name('admin.state.edit');
     Route::post('/state/update',[StateController::class,'updateState'])->name('admin.state.update');
     Route::get('/state/delete/{id}',[StateController::class,'deleteState'])->name('admin.state.delete');
+
+
+
+    //product selling history
+    Route::get('/selling/history',[ProductSellingHistoryController::class,'productSellingHistory'])->name('admin.selling.history');
+
+
+    Route::get('/selling/history/statewise',[ProductSellingHistoryController::class,'statewiseSellingHistory'])->name('statewise.sell');
+
+
+    Route::post('/selling/history/statewise/index',[ProductSellingHistoryController::class,'statewiseSellingHistoryResult'])->name('statewise.sell.index');
+
+    Route::get('/selling/history/datewise',[ProductSellingHistoryController::class,'datewiseSellingHistory'])->name('datewise.sell');
+
+
+    Route::post('/selling/history/datewise/index',[ProductSellingHistoryController::class,'datewiseSellingHistoryResult'])->name('datewise.sell.index');
 
 
 

@@ -1,6 +1,7 @@
-@extends('admin.admin_master')
+@extends('user.user_master')
+
 @section('title')
-Admin Dashboard
+   User Dashboard
 @endsection
 
 @section('content')

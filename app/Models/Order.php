@@ -22,4 +22,8 @@ class Order extends Model
         'status',
         'date',
     ];
+
+    public function state(){
+        return $this->belongsTo(State::class,'c_state');
+    }
 }

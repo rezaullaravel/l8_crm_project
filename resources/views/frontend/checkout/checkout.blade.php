@@ -50,8 +50,13 @@
 
                                     <div class="mt-6">
                                         <p class=" text-2xl text-black mb-2 ml-2">State</p>
-                                        <input class=" w-full  bg-azureish_white px-3 py-2 rounded-md focus:outline-none"
-                                            type="text" name="c_state">
+                                        <select class=" w-full  bg-azureish_white px-3 py-2 rounded-md focus:outline-none"
+                                             name="c_state">
+                                             <option value="" selected disabled>Select</option>
+                                             @foreach ($states as $state)
+                                                 <option value="{{ $state->id }}">{{ $state->state_name }}</option>
+                                             @endforeach
+                                            </select>
                                     </div>
 
 

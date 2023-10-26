@@ -38,7 +38,7 @@ Order Details
 
                                     <tr class="text-center">
                                         <th>State</th>
-                                        <td>{{ $order->c_state }}</td>
+                                        <td>{{ $order->state->state_name }}</td>
                                     </tr>
 
                                     <tr class="text-center">
@@ -55,6 +55,12 @@ Order Details
                                         <th>Shipping Address</th>
                                         <td>{{ $order->c_shipping_address }}</td>
                                     </tr>
+
+                                    <tr class="text-center">
+                                        <th>Order Date</th>
+                                        <td>{{ $order->date }}</td>
+                                    </tr>
+
 
                                     <tr class="text-center">
                                         <th>Payment Type</th>

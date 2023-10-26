@@ -3,7 +3,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('/admin/dashboard') }}" class="brand-link">
-      <img src="{{asset('/')}}admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('/')}}admin/dist/img/companyLogo.jpeg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Nexwift 3</span>
     </a>
 
@@ -24,6 +24,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
 
           {{-- category start --}}
             <li class="nav-item {{ (request()->is('admin/category*')) ? 'menu-open' : '' }}">
@@ -201,6 +202,26 @@
               </li>
               {{-- order history end --}}
 
+
+              {{-- product selling history --}}
+              <li class="nav-item {{ (request()->is('admin/selling*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('admin/selling*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-solid fa-object-group"></i>
+                  <p>
+                    Selling History
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="{{ (request()->is('admin/selling*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
+                  <li class="nav-item">
+                    <a  href="{{ route('admin.selling.history') }}"  class=" nav-link {{ (request()->is('admin/selling/history')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Product Selling History</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              {{-- product selling history end selling--}}
 
         </ul>
       </nav>
