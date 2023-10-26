@@ -42,11 +42,12 @@ class ShoppingCartController extends Controller
 
     //product quantity increment
      public function incrementQuantity(Request $request){
-        $product = ShoppingCart::find($request->rowId);
+         $product = ShoppingCart::find($request->rowId);
 
         $product->quantity = $product->quantity+1;
         $product->save();
-        return response()->json($product);
+        // return response()->json($product);
+        return $product;
     }//end method
 
 
@@ -56,7 +57,8 @@ class ShoppingCartController extends Controller
 
         $product->quantity=$product->quantity-1;
         $product->save();
-         return response()->json($product);
+        // return response()->json($product);
+        return $product;
     }//end method
 
 

@@ -158,7 +158,7 @@
                                         <div class=" mt-3 border border-b-black pb-4">
                                             <div class=" flex justify-between items-center">
                                                 <div class="">
-                                                    <p class=" text-xl font-medium text-black">Delivery Charhe</p>
+                                                    <p class=" text-xl font-medium text-black">Delivery Charge</p>
                                                 </div>
                                                 <div class="">
                                                     <p class=" text-xl font-medium text-black">1$</p>
