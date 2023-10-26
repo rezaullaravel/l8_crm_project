@@ -50,6 +50,12 @@ Route::get('/checkout/page',[CheckoutController::class,'checkout'])->middleware(
 
 //order place
 Route::post('/place/order',[CheckoutController::class,'placeOrder'])->name('place.order');
+
+
+//shop page
+Route::get('/shop/page',function(){
+    return view('frontend.product.product_shop');
+});
 /**===============================Frontend all route end============================== */
 
 
