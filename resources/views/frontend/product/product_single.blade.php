@@ -15,18 +15,18 @@
 @extends('frontend.frontend_master')
 @section('content')
     <section>
-        <div class="py-12 px-3 lg:px-16 xl:px-0">
+        <div class="px-3 py-12 lg:px-16 xl:px-0">
             <div class="container mx-auto">
-                <div class=" lg:w-4/5 mx-auto">
+                <div class="mx-auto lg:w-4/5">
                     <div class="flex">
                         <div class="">
-                            <a href="#" class=" text-black font-satoshi  text-xl font-semibold">Home/</a>
+                            <a href="#" class="font-satoshi text-xl font-semibold text-black">Home/</a>
                         </div>
                         <div class="">
-                            <a href="#" class=" text-black font-satoshi  text-xl font-semibold">Shop/</a>
+                            <a href="#" class="font-satoshi text-xl font-semibold text-black">Shop/</a>
                         </div>
                         <div class="">
-                            <p class=" text-black font-satoshi  text-xl font-semibold">View</p>
+                            <p class="font-satoshi text-xl font-semibold text-black">View</p>
                         </div>
                     </div>
                     <div class="mt-12">
@@ -36,25 +36,24 @@
                                 <div class="swiper product_gellery2">
                                     <div class="swiper-wrapper">
                                         @foreach ($product->multiImages as $image)
-                                        <div class="swiper-slide">
-                                            <img class=" rounded-xl w-full" src="{{ asset($image->product_image) }}" />
-                                        </div>
+                                            <div class="swiper-slide">
+                                                <img class="w-full rounded-xl" src="{{ asset($image->product_image) }}" />
+                                            </div>
                                         @endforeach
 
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                 </div>
-                                <div class=" lg:w-4/5 mx-auto">
-                                    <div thumbsSlider="" class="swiper product_gellery mt-6 ">
-                                        <div class="swiper-wrapper ">
-                                            @foreach ( $product->multiImages as $image )
+                                <div class="mx-auto lg:w-4/5">
+                                    <div thumbsSlider="" class="swiper product_gellery mt-6">
+                                        <div class="swiper-wrapper">
+                                            @foreach ($product->multiImages as $image)
+                                                <div class="swiper-slide coursor-pointer">
 
-                                            <div class="swiper-slide coursor-pointer">
-
-                                                <img class="w-full rounded-xl"
-                                                    src="{{ asset($image->product_image) }}" />
-                                            </div>
+                                                    <img class="w-full rounded-xl"
+                                                        src="{{ asset($image->product_image) }}" />
+                                                </div>
                                             @endforeach
 
                                         </div>
@@ -63,9 +62,9 @@
 
                             </div>
                             <div class="mt-4 md:mt-0">
-                                @if (Session('info-message'))
+                                {{-- @if (Session('info-message'))
                                     <h4 style="color:#228b22">{{ Session::get('info-message') }}</h4>
-                                @endif
+                                @endif --}}
                                 <div class="flex justify-center md:justify-start">
                                     <form action="{{ route('product.add.cart') }}" method="POST">
                                         @csrf
@@ -96,10 +95,11 @@
                                             </div>
                                         </div> --}}
 
-                                        <h2 class=" text-2xl font-semibold text-black font-satoshi">{{ $product->product_name }}</h2>
+                                        <h2 class="font-satoshi text-2xl font-semibold text-black">
+                                            {{ $product->product_name }}</h2>
                                         <div class="">
 
-                                            <div class=" flex items-center gap-4 mb-4">
+                                            <div class="mb-4 flex items-center gap-4">
                                                 {{-- <div class=" mt-2">
                                                     <button class=" text-xl text-black">
                                                         <iconify-icon icon="pepicons-pop:line-x"></iconify-icon>
@@ -121,16 +121,18 @@
 
                                             <div class="">
 
-                                                <h2 class=" text-2xl font-satoshi text-black font-bold mb-4">{{ $product->price }} $</h2>
+                                                <h2 class="mb-4 font-satoshi text-2xl font-bold text-black">
+                                                    {{ $product->price }} $</h2>
                                             </div>
                                         </div>
                                         <div class="mb-4 flex justify-center md:justify-start">
-                                            <button class=" bg-crayola px-5 py-1 hover:bg-black hover:text-white" type="submit">Add to
+                                            <button class="bg-crayola px-5 py-1 hover:bg-black hover:text-white"
+                                                type="submit">Add to
                                                 Cart</button>
                                         </div>
                                     </form>
                                 </div>
-                                <div class=" mt-4 md:mt-0">
+                                <div class="mt-4 md:mt-0">
 
                                     {{-- <div class="mt-5">
                                         <div class="">
@@ -158,18 +160,40 @@
                         </div>
                     </div>
 
-                    <div class=" border border-slate-200 rounded-lg p-5 mt-10">
-                        <div class=" border-b border-slate-200 pb-4">
-                            <h2 class=" text-2xl  font-semibold  font-satoshi">Description</h2>
+                    <div class="mt-10 rounded-lg border border-slate-200 p-5">
+                        <div class="border-b border-slate-200 pb-4">
+                            <h2 class="font-satoshi text-2xl font-semibold">Description</h2>
                         </div>
-                        <p class=" text-base  font-normal font-satoshi text-justify mt-2 text-slate-400">{!! $product->product_description !!}</p>
+                        <p class="mt-2 text-justify font-satoshi text-base font-normal text-slate-400">
+                            {!! $product->product_description !!}</p>
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+    <script>
+        $(document).ready(function() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-center",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "3000",
+                "hideDuration": "1000",
+                "timeOut": "1000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            @if (Session::has('info-message'))
+                toastr.error('{{ Session::get('info-message') }}');
+            @endif
+        });
+    </script>
 @endsection
-
-
-
