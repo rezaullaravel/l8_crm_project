@@ -8,11 +8,13 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\StorehouseController;
+use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\OrderHistoryController;
 use App\Http\Controllers\Frontend\ShoppingCartController;
+use App\Http\Controllers\User\UserOrderHistoryController;
 use App\Http\Controllers\Frontend\FrontendIndexController;
 use App\Http\Controllers\Admin\ProductSellingHistoryController;
 
@@ -59,10 +61,32 @@ Route::get('/shop/page',function(){
 /**===============================Frontend all route end============================== */
 
 
-Auth::routes();
 
-//user
+
+/**====================User all route start========================================================== */
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth','user'])->name('home');
+
+//order history
+Route::get('/user/order/history',[UserOrderHistoryController::class,'userOrderHistory'])->middleware(['auth','user'])->name('user.order.history');
+
+//order details
+Route::get('/user/order/details/{id}',[UserOrderHistoryController::class,'userOrderDetails'])->middleware(['auth','user'])->name('user.order.details');
+
+//user profile
+Route::get('/user/profile',[UserProfileController::class,'userProfile'])->middleware(['auth','user'])->name('user.profile');
+
+Route::get('/user/profile/edit',[UserProfileController::class,'userProfileEdit'])->middleware(['auth','user'])->name('user.profile.edit');
+
+Route::post('/user/profile/update',[UserProfileController::class,'userProfileUpdate'])->middleware(['auth','user'])->name('user.profile.update');
+
+
+
+
+/**====================User all route end ========================================================== */
+
+
+
 
 
 /** ============================== Admin all route start ================================== */

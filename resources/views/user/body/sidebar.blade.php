@@ -26,25 +26,25 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 
-          {{-- category start --}}
-            <li class="nav-item {{ (request()->is('admin/category*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('admin/category*')) ? 'active' : '' }}">
+          {{-- order start --}}
+            <li class="nav-item {{ (request()->is('user/order*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('user/order*')) ? 'active' : '' }}">
                   <i class="nav-icon fas fa-solid fa-object-group"></i>
                   <p>
                     Order
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-                <ul class="nav nav-treeview" style="{{ (request()->is('admin/category*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
+                <ul class="nav nav-treeview" style="{{ (request()->is('user/order*')) ? 'display:block; overflow:hidden;' : 'display:none; overflow:hidden;' }} ">
                   <li class="nav-item">
-                    <a  href=""  class=" nav-link {{ (request()->is('admin/category/add')) ? 'active' : '' }}">
+                    <a  href="{{ route('user.order.history') }}"  class=" nav-link {{ (request()->is('user/order/history')) ? 'active' : '' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>My Order</p>
                     </a>
                   </li>
                 </ul>
               </li>
-              {{-- category end --}}
+              {{-- order end --}}
 
         </ul>
       </nav>
