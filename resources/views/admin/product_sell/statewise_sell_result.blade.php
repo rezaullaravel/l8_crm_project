@@ -35,7 +35,7 @@ Selling History
                                   <tr class="text-center">
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $order->order_total }} $</td>
-                                    <td>{{ $order->date }}</td>
+                                    <td>{{ date('Y-m-d',strtotime($order->date)) }}</td>
                                   </tr>
 
                                   @php

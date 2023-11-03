@@ -45,7 +45,8 @@ class CheckoutController extends Controller
 
           $data['payment_type'] = $request->payment_type;
 
-          $data['date'] = date('F j,Y');
+          $data['date'] = date('y-m-d h:i:s');
+
 
           $orderId = Order::insertGetId($data);
 
@@ -59,7 +60,7 @@ class CheckoutController extends Controller
                   'product_id' => $product->product_id,
                   'product_quantity' => $product->quantity,
                   'price' => $product->product->price,
-                  'date' => date('F j,Y'),
+                  'date' => date('y-m-d h:i:s'),
                 //   'color' => $product->color,
               ]);
             }

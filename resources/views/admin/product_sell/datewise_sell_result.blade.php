@@ -14,8 +14,8 @@ Selling History
                 {{-- data table --}}
                   <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center mb-2" style="font-weight:600;">Product Selling History From {{ $form }} </h3>
-                        <h3 class="text-center mb-2" style="font-weight:600;">To {{ $to }}. </h3>
+                        <h3 class="text-center mb-2" style="font-weight:600;">Product Selling History From {{ date('F j,Y',strtotime($form)) }} </h3>
+                        <h3 class="text-center mb-2" style="font-weight:600;">To {{  date('F j,Y',strtotime($to)) }} . </h3>
                     </div>
                   </div>
                    <div class="card card-primary mt-4">
@@ -37,7 +37,7 @@ Selling History
                                   <tr class="text-center">
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $order->order_total }} $</td>
-                                    <td>{{ $order->date }}</td>
+                                    <td>{{ date('F j,Y',strtotime($order->date)) }}</td>
                                   </tr>
 
                                   @php

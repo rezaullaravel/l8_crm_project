@@ -24,12 +24,11 @@ class ProductSellingHistoryController extends Controller
 
     //state wise selling history result
     public function statewiseSellingHistoryResult(Request $request){
-        $form = date('F j,Y',strtotime($request->from));
-        $to = date('F j,Y',strtotime($request->to));
+        $form = date('y-m-d 00:00:00',strtotime($request->from));
+        $to = date('y-m-d 23:59:59',strtotime($request->to));
 
         $state = State::where('id',$request->c_state)->first();
-        $orders = Order::where('c_state',$request->c_state)->whereDate('date', '>=', $form)
-        ->whereDate('date', '<=', $to)->get();
+        $orders = Order::where('c_state',$request->c_state)->whereBetween('date',[$form,$to])->get();
 
         return view('admin.product_sell.statewise_sell_result',compact('orders','state'));
 
@@ -45,16 +44,10 @@ class ProductSellingHistoryController extends Controller
 
     //date wise selling history result
     public function datewiseSellingHistoryResult(Request $request){
-        $form = date('F j,Y',strtotime($request->from));
-        $to = date('F j,Y',strtotime($request->to));
+        $form = date('y-m-d 00:00:00',strtotime($request->from));
+        $to = date('y-m-d 23:59:59',strtotime($request->to));
 
-
-$orders = Order::whereDate('date', '>=', $form)
-->whereDate('date', '<=', $to)
-->get();
-// ->toArray();
-
-// $orders = Order::whereBetween('date',array($form,$to))->get();
+ $orders = Order::whereBetween('date',[$form,$to])->get();
 
         return view('admin.product_sell.datewise_sell_result',compact('orders','form','to'));
     }//end method
